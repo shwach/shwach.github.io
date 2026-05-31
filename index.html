@@ -1,58 +1,468 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>고객 지원</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Songhwa Chae — iOS & Game Developer</title>
+  <meta name="description" content="채송화의 앱 포트폴리오 — iOS와 게임 앱을 만드는 인디 개발자입니다.">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f9f9f7;
+      --surface: #ffffff;
+      --border: #e8e8e4;
+      --ink: #1a1a18;
+      --muted: #6b6b66;
+      --accent: #3d7aed;
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141412;
+        --surface: #1e1e1c;
+        --border: #2e2e2a;
+        --ink: #f0f0ec;
+        --muted: #9a9a94;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f5f7;
-      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 24px 48px;
+    }
+    .hero-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── Section ── */
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── App Cards ── */
+    .apps {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 20px;
+      align-items: start;
+      transition: box-shadow .15s;
+    }
+    .app-card:first-child { border-radius: var(--radius) var(--radius) 6px 6px; }
+    .app-card:last-child  { border-radius: 6px 6px var(--radius) var(--radius); }
+    .app-card:only-child  { border-radius: var(--radius); }
+    .app-card:not(:first-child) { margin-top: 2px; }
+    .app-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); z-index: 1; position: relative; }
+
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .app-body {}
+    .app-header {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
     }
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 48px 40px;
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-    }
-    h1 {
-      font-size: 22px;
+    .app-name {
+      font-size: 17px;
       font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 12px;
+      letter-spacing: -.01em;
     }
-    p {
-      font-size: 15px;
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-    .email {
-      display: inline-block;
-      font-size: 16px;
+    .app-store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
       font-weight: 600;
-      color: #1a1a1a;
-      background: #f5f5f7;
-      padding: 14px 24px;
-      border-radius: 12px;
-      letter-spacing: 0.2px;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 5px 12px;
+      border: 1.5px solid var(--accent);
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+      flex-shrink: 0;
+    }
+    .app-store-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    .app-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: .02em;
+    }
+    .tag.engine  { color: #c27c2a; border-color: #e8c07a; background: #fdf6e8; }
+    .tag.swift   { color: #d95e2a; border-color: #f4b08a; background: #fef2ec; }
+    .tag.flutter { color: #0474bc; border-color: #7ac0f0; background: #edf6fd; }
+    .tag.db      { color: #2a7a4f; border-color: #7acca0; background: #ecf9f2; }
+    .tag.api     { color: #7a3abf; border-color: #c097e8; background: #f4edfb; }
+    .tag.rn      { color: #1a7abf; border-color: #7ac4f0; background: #edf6fd; }
+    @media (prefers-color-scheme: dark) {
+      .tag.engine  { background: #2a1e08; border-color: #5c4010; color: #e0aa50; }
+      .tag.swift   { background: #2a1208; border-color: #6a2e10; color: #f08060; }
+      .tag.flutter { background: #081828; border-color: #104868; color: #60b8f0; }
+      .tag.db      { background: #082018; border-color: #104830; color: #60c890; }
+      .tag.api     { background: #180828; border-color: #401868; color: #c080f0; }
+      .tag.rn      { background: #081828; border-color: #104868; color: #60b8f0; }
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .skill-card h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 10px;
+    }
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .skill-item {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .skill-item::after { content: "·"; margin-left: 6px; color: var(--border); }
+    .skill-item:last-child::after { display: none; }
+
+    /* ── Support ── */
+    .support-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .support-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 15px;
+      transition: background .12s;
+    }
+    .support-row:first-child { border-radius: var(--radius) var(--radius) 6px 6px; }
+    .support-row:last-child  { border-radius: 6px 6px var(--radius) var(--radius); }
+    .support-row:hover { background: var(--bg); }
+    .support-row span { color: var(--muted); font-size: 18px; }
+    .support-app-name { font-weight: 600; }
+    .support-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+    /* ── Footer ── */
+    footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--muted); text-decoration: none; font-size: 13px; }
+    footer a:hover { color: var(--ink); }
+    .footer-links { display: flex; gap: 20px; }
+
+    /* ── Support ── */
+    .support-card-text {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .support-email {
+      font-size: 15px;
+      color: var(--ink);
       user-select: all;
+    }
+
+    @media (max-width: 520px) {
+      .app-card {
+        grid-template-columns: 56px 1fr;
+        gap: 14px;
+        padding: 20px;
+      }
+      .app-icon { width: 56px; height: 56px; border-radius: 12px; }
+      .hero { padding: 56px 20px 36px; }
+      section { padding: 0 20px 60px; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>고객 지원</h1>
-    <p>문의 사항이 있으시면<br>아래 이메일로 연락해 주세요.</p>
-    <span class="email">doggguggu@gmail.com</span>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-label">Portfolio</p>
+    <h1>채송화<br>Songhwa Chae</h1>
+    <p>프론트엔드 개발자 · 사이드로 iOS와 게임 앱을 만드는 인디 개발자</p>
   </div>
+
+  <!-- Apps -->
+  <section>
+    <p class="section-title">Apps</p>
+    <div class="apps">
+
+      <!-- Farm Trade -->
+      <div class="app-card">
+        <img class="app-icon" src="icons/farmtrade.png" alt="Farm Trade 아이콘">
+        <div class="app-body">
+          <div class="app-header">
+            <span class="app-name">Farm Trade</span>
+            <a class="app-store-btn" href="https://apps.apple.com/kr/app/id6774788641" target="_blank">
+              ↗ App Store
+            </a>
+          </div>
+          <p class="app-desc">씨앗을 심고, 작물을 키우고, 시장 시세를 보며 팔아 30일 안에 최대 자산을 모으는 전략 농장 게임. 전 세계 동일 시세로 경쟁하는 주간·일별 챌린지와 글로벌 랭킹을 제공합니다.</p>
+          <div class="tags">
+            <span class="tag engine">Godot 4</span>
+            <span class="tag engine">GDScript</span>
+            <span class="tag db">Firebase</span>
+            <span class="tag api">AdMob</span>
+            <span class="tag">iOS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pomodoro Dungeon -->
+      <div class="app-card">
+        <img class="app-icon" src="icons/pomodoro.png" alt="뽀모도로 던전 아이콘">
+        <div class="app-body">
+          <div class="app-header">
+            <span class="app-name">뽀모도로 던전</span>
+            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C-%EB%8D%98%EC%A0%84/id6772534621" target="_blank">
+              ↗ App Store
+            </a>
+          </div>
+          <p class="app-desc">포모도로 타이머로 집중 시간을 쌓으면 픽셀 던전을 탐험하는 RPG. 집중할수록 캐릭터가 성장하고 던전이 깊어집니다.</p>
+          <div class="tags">
+            <span class="tag engine">Godot 4</span>
+            <span class="tag engine">GDScript</span>
+            <span class="tag">iOS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 도그 워크 -->
+      <div class="app-card">
+        <img class="app-icon" src="icons/dogwalk.png" alt="도그 워크 아이콘">
+        <div class="app-body">
+          <div class="app-header">
+            <span class="app-name">도그 워크 - 강아지 산책</span>
+            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EB%8F%84%EA%B7%B8-%EC%9B%8C%ED%81%AC-%EA%B0%95%EC%95%84%EC%A7%80-%EC%82%B0%EC%B1%85/id6771354024" target="_blank">
+              ↗ App Store
+            </a>
+          </div>
+          <p class="app-desc">강아지와 함께하는 산책 기록 앱. GPS로 산책 경로와 거리를 추적하고 히스토리를 저장합니다.</p>
+          <div class="tags">
+            <span class="tag flutter">Flutter</span>
+            <span class="tag api">Google Maps</span>
+            <span class="tag">iOS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 보더콜리 만보기 -->
+      <div class="app-card">
+        <img class="app-icon" src="icons/border.png" alt="보더콜리 만보기 아이콘">
+        <div class="app-body">
+          <div class="app-header">
+            <span class="app-name">보더콜리 만보기</span>
+            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EB%B3%B4%EB%8D%94%EC%BD%9C%EB%A6%AC-%EB%A7%8C%EB%B3%B4%EA%B8%B0/id6773739392" target="_blank">
+              ↗ App Store
+            </a>
+          </div>
+          <p class="app-desc">보더콜리와 함께하는 걸음 수 트래커. HealthKit로 오늘 걸음을 실시간으로 읽어 보더콜리 픽셀 캐릭터가 반응합니다. 1,000보 달성 시 양 떼를 몰 수 있어요.</p>
+          <div class="tags">
+            <span class="tag flutter">Flutter</span>
+            <span class="tag api">HealthKit</span>
+            <span class="tag">iOS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 복권 가게 시뮬레이터 -->
+      <div class="app-card">
+        <img class="app-icon" src="icons/lotto.png" alt="복권 가게 시뮬레이터 아이콘">
+        <div class="app-body">
+          <div class="app-header">
+            <span class="app-name">복권 가게 시뮬레이터</span>
+            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EB%B3%B5%EA%B6%8C-%EA%B0%80%EA%B2%8C-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0/id6772916627" target="_blank">
+              ↗ App Store
+            </a>
+          </div>
+          <p class="app-desc">나만의 복권 가게를 운영하는 시뮬레이션 게임. 골드를 쌓고, 명성도를 올리고, 가게를 업그레이드해 더 큰 복권 가게로 키워보세요. 데이터 탭 잠금 해제 인앱 구매 포함.</p>
+          <div class="tags">
+            <span class="tag rn">React Native</span>
+            <span class="tag api">StoreKit</span>
+            <span class="tag">iOS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 왕초보 타자연습 -->
+      <div class="app-card">
+        <img class="app-icon" src="icons/typing.png" alt="왕초보 타자연습 아이콘">
+        <div class="app-body">
+          <div class="app-header">
+            <span class="app-name">왕초보 타자연습</span>
+            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EC%99%95%EC%B4%88%EB%B3%B4-%ED%83%80%EC%9E%90%EC%97%B0%EC%8A%B5/id6770530839" target="_blank">
+              ↗ App Store
+            </a>
+          </div>
+          <p class="app-desc">한글·영문 타자 연습 앱. 자판 배열부터 시작해 속도와 정확도를 단계적으로 향상할 수 있습니다.</p>
+          <div class="tags">
+            <span class="tag flutter">Flutter</span>
+            <span class="tag">iOS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <p class="section-title">Tech Stack</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Language</h3>
+        <div class="skill-list">
+          <span class="skill-item">GDScript</span>
+          <span class="skill-item">Dart</span>
+          <span class="skill-item">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Framework</h3>
+        <div class="skill-list">
+          <span class="skill-item">Godot 4</span>
+          <span class="skill-item">Flutter</span>
+          <span class="skill-item">React Native</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Backend & API</h3>
+        <div class="skill-list">
+          <span class="skill-item">Firebase</span>
+          <span class="skill-item">HealthKit</span>
+          <span class="skill-item">StoreKit</span>
+          <span class="skill-item">AdMob</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Tools</h3>
+        <div class="skill-list">
+          <span class="skill-item">Xcode</span>
+          <span class="skill-item">App Store Connect</span>
+          <span class="skill-item">GitHub</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Support -->
+  <section>
+    <p class="section-title">고객 지원</p>
+    <p class="support-card-text">문의 사항이 있으시면 아래 이메일로 연락해 주세요.</p>
+    <span class="support-email">doggguggu@gmail.com</span>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Songhwa Chae</p>
+  </footer>
+
 </body>
 </html>
