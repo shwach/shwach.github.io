@@ -3,465 +3,723 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Songhwa Chae — iOS & Game Developer</title>
-  <meta name="description" content="채송화의 앱 포트폴리오 — iOS와 게임 앱을 만드는 인디 개발자입니다.">
+  <title>GGU Games — Indie Mobile Game Studio</title>
+  <meta name="description" content="GGU Games는 매일 손이 가는 작은 모바일 게임과 앱을 만드는 인디 스튜디오입니다.">
+  <meta property="og:title" content="GGU Games">
+  <meta property="og:description" content="Indie mobile games by GGU.">
+  <meta property="og:image" content="https://shwach.github.io/icons/guild.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50'/%3E%3Ctext x='50' y='66' font-family='Impact,Arial Narrow,sans-serif' font-size='44' font-weight='700' fill='white' text-anchor='middle'%3EGGU%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f9f9f7;
-      --surface: #ffffff;
-      --border: #e8e8e4;
-      --ink: #1a1a18;
-      --muted: #6b6b66;
-      --accent: #3d7aed;
-      --radius: 18px;
+      --black: #0a0a0a;
+      --ink: #111;
+      --white: #fff;
+      --paper: #f4f3ef;
+      --muted: #6a6a66;
+      --line: #e2e1dc;
+      --max: 1120px;
+      --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+      --body: "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #141412;
-        --surface: #1e1e1c;
-        --border: #2e2e2a;
-        --ink: #f0f0ec;
-        --muted: #9a9a94;
-      }
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      background: var(--bg);
+      font-family: var(--body);
+      background: var(--white);
       color: var(--ink);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
+    a { color: inherit; }
+    img { display: block; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Logo ── */
+    .logo {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--white);
+      display: grid; place-items: center;
+      font-family: var(--display);
+      font-size: 17px;
+      letter-spacing: .01em;
+      flex-shrink: 0;
+    }
+    .logo.inverse { background: var(--white); color: var(--black); }
+
+    /* ── Header ── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-name { font-family: var(--display); font-size: 24px; letter-spacing: .01em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: 14px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .nav-links a:hover { opacity: .55; }
+    .nav-yt {
+      background: var(--black); color: var(--white) !important;
+      padding: 8px 16px; border-radius: 999px;
+    }
+    .nav-yt:hover { opacity: .8 !important; }
 
     /* ── Hero ── */
     .hero {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 80px 24px 48px;
+      background: var(--black);
+      color: var(--white);
+      overflow: hidden;
+      position: relative;
     }
-    .hero-label {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
+    .hero .wrap { padding-top: 96px; padding-bottom: 96px; position: relative; z-index: 1; }
+    .eyebrow {
+      font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: #9a9a96; margin-bottom: 20px;
     }
     .hero h1 {
-      font-size: clamp(32px, 6vw, 52px);
-      font-weight: 700;
-      letter-spacing: -.02em;
-      line-height: 1.15;
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(56px, 11vw, 148px);
+      line-height: .92;
+      letter-spacing: -.005em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero h1 .outline { color: transparent; -webkit-text-stroke: 2px var(--white); }
+    .hero p.lead {
+      font-size: clamp(16px, 2vw, 19px);
+      color: #c9c9c5;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 24px; border-radius: 999px;
+      font-weight: 700; font-size: 15px; text-decoration: none;
+      transition: transform .15s, background .15s, color .15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-white { background: var(--white); color: var(--black); }
+    .btn-ghost { border: 1.5px solid #555; color: var(--white); }
+    .btn-ghost:hover { border-color: var(--white); }
+    .hero-mark {
+      position: absolute; right: -6vw; top: 50%; transform: translateY(-50%);
+      width: min(52vw, 620px); aspect-ratio: 1;
+      border-radius: 50%;
+      border: 2px solid #222;
+      display: grid; place-items: center;
+      font-family: var(--display);
+      font-size: min(18vw, 220px);
+      color: #161616;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── Marquee ── */
+    .marquee {
+      background: var(--black);
+      border-top: 1px solid #222;
+      overflow: hidden;
+      padding: 22px 0;
+    }
+    .marquee-track {
+      display: flex; gap: 20px; width: max-content;
+      animation: scroll 40s linear infinite;
+    }
+    .marquee img { width: 84px; height: 84px; border-radius: 20px; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+    /* ── Sections ── */
+    section { padding: 112px 0; }
+    section.alt { background: var(--paper); }
+    .sec-head {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .sec-num { font-size: 13px; font-weight: 700; letter-spacing: .14em; color: var(--muted); margin-bottom: 10px; }
+    .sec-title {
+      font-family: var(--display); font-weight: 400;
+      font-size: clamp(44px, 7vw, 84px);
+      line-height: .95; text-transform: uppercase;
+    }
+    .sec-desc { max-width: 380px; color: var(--muted); font-size: 15px; }
+
+    /* ── Flagship ── */
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feat {
+      background: var(--black); color: var(--white);
+      border-radius: 28px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform .2s;
+    }
+    .feat:hover { transform: translateY(-6px); }
+    .feat-art { position: relative; background: #161616; padding: 40px; display: grid; place-items: center; }
+    .feat-art img {
+      width: 100%; max-width: 220px; aspect-ratio: 1; object-fit: cover;
+      border-radius: 44px; box-shadow: 0 24px 60px rgba(0,0,0,.6);
+    }
+    .feat-no { position: absolute; top: 18px; left: 22px; font-family: var(--display); font-size: 22px; color: #555; }
+    .feat-body { padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1; }
+    .feat-genre { font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: #8a8a86; margin-bottom: 8px; }
+    .feat h3 { font-family: var(--display); font-weight: 400; font-size: 40px; line-height: 1; text-transform: uppercase; }
+    .feat-ko { font-size: 14px; font-weight: 700; color: #bbb; margin: 6px 0 14px; }
+    .feat-desc { font-size: 14px; color: #a9a9a5; margin-bottom: 24px; flex: 1; }
+    .store-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .store-btn {
+      flex: 1; text-align: center; white-space: nowrap;
+      padding: 11px 14px; border-radius: 999px;
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      background: var(--white); color: var(--black);
+    }
+    .store-btn + .store-btn { background: transparent; color: var(--white); border: 1.5px solid #444; }
+    .store-btn:hover { opacity: .85; }
+
+    /* ── Game grid ── */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      display: flex; flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    section.alt .card { border-color: transparent; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.08); }
+    .card-top { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .card img { width: 76px; height: 76px; border-radius: 18px; object-fit: cover; }
+    .card-genre { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+    .card h3 { font-size: 19px; font-weight: 900; letter-spacing: -.01em; line-height: 1.3; }
+    .card p { font-size: 14px; color: var(--muted); margin-bottom: 20px; flex: 1; }
+    .card .store-row { gap: 6px; }
+    .card-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .store-link {
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      padding: 8px 14px; border-radius: 999px;
+      background: var(--black); color: var(--white);
+      white-space: nowrap;
+    }
+    .store-link + .store-link { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+    .store-link:hover { opacity: .8; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 11px; font-weight: 700; padding: 3px 9px;
+      border-radius: 6px; border: 1px solid var(--line); color: var(--muted);
+    }
+
+    /* ── Studio ── */
+    .studio {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .studio-text p { font-size: 17px; margin-bottom: 18px; color: #333; }
+    .studio-text strong { color: var(--ink); }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat {
+      border: 1px solid var(--line); border-radius: 20px; padding: 28px;
+    }
+    .stat b {
+      display: block; font-family: var(--display); font-weight: 400;
+      font-size: 56px; line-height: 1; margin-bottom: 8px;
+    }
+    .stat span { font-size: 14px; color: var(--muted); font-weight: 500; }
+    .stat.dark { background: var(--black); color: var(--white); border-color: var(--black); }
+    .stat.dark span { color: #aaa; }
+
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 72px; }
+    .value { border-top: 2px solid var(--black); padding-top: 20px; }
+    .value h4 { font-family: var(--display); font-weight: 400; font-size: 28px; text-transform: uppercase; margin-bottom: 8px; }
+    .value p { font-size: 14px; color: var(--muted); }
+
+    .stack { margin-top: 72px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .stack-label { font-size: 13px; font-weight: 700; letter-spacing: .12em; color: var(--muted); margin-right: 8px; }
+    .chip {
+      font-size: 14px; font-weight: 700; padding: 8px 16px;
+      border-radius: 999px; background: var(--paper);
+    }
+
+    /* ── Contact ── */
+    .contact { background: var(--black); color: var(--white); text-align: center; }
+    .contact .logo { width: 120px; height: 120px; font-size: 46px; margin: 0 auto 36px; }
+    .contact h2 {
+      font-family: var(--display); font-weight: 400;
+      font-size: clamp(48px, 9vw, 112px); line-height: .95; text-transform: uppercase;
       margin-bottom: 20px;
     }
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.7;
-    }
-
-    /* ── Section ── */
-    section {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
-    .section-title {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* ── App Cards ── */
-    .apps {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .app-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 28px;
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 20px;
-      align-items: start;
-      transition: box-shadow .15s;
-    }
-    .app-card:first-child { border-radius: var(--radius) var(--radius) 6px 6px; }
-    .app-card:last-child  { border-radius: 6px 6px var(--radius) var(--radius); }
-    .app-card:only-child  { border-radius: var(--radius); }
-    .app-card:not(:first-child) { margin-top: 2px; }
-    .app-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); z-index: 1; position: relative; }
-
-    .app-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 16px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .app-body {}
-    .app-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
-    }
-    .app-name {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -.01em;
-    }
-    .app-store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      padding: 5px 12px;
-      border: 1.5px solid var(--accent);
-      border-radius: 20px;
-      white-space: nowrap;
-      transition: background .15s, color .15s;
-      flex-shrink: 0;
-    }
-    .app-store-btn:hover {
-      background: var(--accent);
-      color: #fff;
-    }
-    .app-desc {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 14px;
-      line-height: 1.6;
-    }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .tag {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 6px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      letter-spacing: .02em;
-    }
-    .tag.engine  { color: #c27c2a; border-color: #e8c07a; background: #fdf6e8; }
-    .tag.swift   { color: #d95e2a; border-color: #f4b08a; background: #fef2ec; }
-    .tag.flutter { color: #0474bc; border-color: #7ac0f0; background: #edf6fd; }
-    .tag.db      { color: #2a7a4f; border-color: #7acca0; background: #ecf9f2; }
-    .tag.api     { color: #7a3abf; border-color: #c097e8; background: #f4edfb; }
-    .tag.rn      { color: #1a7abf; border-color: #7ac4f0; background: #edf6fd; }
-    @media (prefers-color-scheme: dark) {
-      .tag.engine  { background: #2a1e08; border-color: #5c4010; color: #e0aa50; }
-      .tag.swift   { background: #2a1208; border-color: #6a2e10; color: #f08060; }
-      .tag.flutter { background: #081828; border-color: #104868; color: #60b8f0; }
-      .tag.db      { background: #082018; border-color: #104830; color: #60c890; }
-      .tag.api     { background: #180828; border-color: #401868; color: #c080f0; }
-      .tag.rn      { background: #081828; border-color: #104868; color: #60b8f0; }
-    }
-
-    /* ── Skills ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .skill-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
-    }
-    .skill-card h3 {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-bottom: 10px;
-    }
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .skill-item {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink);
-    }
-    .skill-item::after { content: "·"; margin-left: 6px; color: var(--border); }
-    .skill-item:last-child::after { display: none; }
-
-    /* ── Support ── */
-    .support-links {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .support-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 15px;
-      transition: background .12s;
-    }
-    .support-row:first-child { border-radius: var(--radius) var(--radius) 6px 6px; }
-    .support-row:last-child  { border-radius: 6px 6px var(--radius) var(--radius); }
-    .support-row:hover { background: var(--bg); }
-    .support-row span { color: var(--muted); font-size: 18px; }
-    .support-app-name { font-weight: 600; }
-    .support-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .contact p { color: #b5b5b1; margin-bottom: 36px; }
+    .contact .cta-row { justify-content: center; }
+    .mail { font-size: clamp(18px, 3vw, 26px); font-weight: 700; text-decoration: none; border-bottom: 2px solid #444; padding-bottom: 4px; display: inline-block; margin-bottom: 40px; }
+    .mail:hover { border-color: var(--white); }
 
     /* ── Footer ── */
-    footer {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 24px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      border-top: 1px solid var(--border);
-      padding-top: 28px;
+    footer { background: var(--black); color: #8a8a86; border-top: 1px solid #222; }
+    footer .wrap {
+      padding-top: 28px; padding-bottom: 40px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      font-size: 13px;
     }
-    footer p { font-size: 13px; color: var(--muted); }
-    footer a { color: var(--muted); text-decoration: none; font-size: 13px; }
-    footer a:hover { color: var(--ink); }
-    .footer-links { display: flex; gap: 20px; }
+    footer .brand-name { color: var(--white); font-size: 18px; }
+    footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--white); }
 
-    /* ── Support ── */
-    .support-card-text {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 8px;
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .feat-grid { grid-template-columns: 1fr; }
+      .feat { flex-direction: row; }
+      .feat-art { padding: 24px; flex: 0 0 38%; }
+      .feat-art img { border-radius: 28px; }
+      .studio { grid-template-columns: 1fr; gap: 40px; }
+      .values { grid-template-columns: 1fr; }
+      .hero-mark { opacity: .6; }
     }
-    .support-email {
-      font-size: 15px;
-      color: var(--ink);
-      user-select: all;
-    }
-
-    @media (max-width: 520px) {
-      .app-card {
-        grid-template-columns: 56px 1fr;
-        gap: 14px;
-        padding: 20px;
-      }
-      .app-icon { width: 56px; height: 56px; border-radius: 12px; }
-      .hero { padding: 56px 20px 36px; }
-      section { padding: 0 20px 60px; }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .hero-mark { display: none; }
+      section { padding: 80px 0; }
+      .hero .wrap { padding-top: 64px; padding-bottom: 72px; }
+      .grid { grid-template-columns: 1fr; }
+      .feat { flex-direction: column; }
+      .feat-art { padding: 32px; }
+      .feat-art img { max-width: 180px; border-radius: 36px; }
+      .card { padding: 22px; }
+      .stat { padding: 22px; }
+      .stat b { font-size: 44px; }
+      .marquee img { width: 64px; height: 64px; border-radius: 15px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="GGU Games 홈">
+        <span class="logo">GGU</span>
+        <span class="brand-name">GGU GAMES</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-yt" href="https://www.youtube.com/@doggguggu" target="_blank" rel="noopener">▶ YouTube</a></li>
+      </ul>
+    </div>
+  </header>
+
   <!-- Hero -->
-  <div class="hero">
-    <p class="hero-label">Portfolio</p>
-    <h1>채송화<br>Songhwa Chae</h1>
-    <p>프론트엔드 개발자 · 사이드로 iOS와 게임 앱을 만드는 인디 개발자</p>
+  <div class="hero" id="top">
+    <div class="hero-mark" aria-hidden="true">GGU</div>
+    <div class="wrap">
+      <p class="eyebrow">Indie Mobile Game Studio</p>
+      <h1>Small games.<br><span class="outline">Big</span> fun.</h1>
+      <p class="lead">GGU Games는 하루 5분, 매일 손이 가는 작은 모바일 게임을 만드는 인디 스튜디오입니다. Idle Guild, Idle Blade Smith, Lazy Farm까지. 앱을 꺼 둬도 계속 자라는 방치형 게임을 iOS와 Android에 선보입니다.</p>
+      <div class="cta-row">
+        <a class="btn btn-white" href="#featured">게임 보러가기 →</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/@doggguggu" target="_blank" rel="noopener">▶ 플레이 영상</a>
+      </div>
+    </div>
   </div>
 
+  <!-- Icon marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <img src="icons/guild.jpg" alt=""><img src="icons/blade.jpg" alt=""><img src="icons/farm.jpg" alt=""><img src="icons/split.jpg" alt=""><img src="icons/spell.jpg" alt=""><img src="icons/arena.png" alt=""><img src="icons/branch.jpg" alt=""><img src="icons/cart.jpg" alt=""><img src="icons/healer.jpg" alt=""><img src="icons/fantasy.jpg" alt=""><img src="icons/pigeon.jpg" alt=""><img src="icons/sword.png" alt=""><img src="icons/mage.jpg" alt=""><img src="icons/deep.jpg" alt=""><img src="icons/lotto.png" alt=""><img src="icons/pomodoro.png" alt=""><img src="icons/queue.jpg" alt="">
+      <img src="icons/guild.jpg" alt=""><img src="icons/blade.jpg" alt=""><img src="icons/farm.jpg" alt=""><img src="icons/split.jpg" alt=""><img src="icons/spell.jpg" alt=""><img src="icons/arena.png" alt=""><img src="icons/branch.jpg" alt=""><img src="icons/cart.jpg" alt=""><img src="icons/healer.jpg" alt=""><img src="icons/fantasy.jpg" alt=""><img src="icons/pigeon.jpg" alt=""><img src="icons/sword.png" alt=""><img src="icons/mage.jpg" alt=""><img src="icons/deep.jpg" alt=""><img src="icons/lotto.png" alt=""><img src="icons/pomodoro.png" alt=""><img src="icons/queue.jpg" alt="">
+    </div>
+  </div>
+
+  <!-- Featured -->
+  <section id="featured">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-num">01 — FEATURED</p>
+          <h2 class="sec-title">Flagship Games</h2>
+        </div>
+        <p class="sec-desc">GGU를 대표하는 방치형 게임 3종. App Store와 Google Play에서 무료로 플레이하세요.</p>
+      </div>
+      <div class="feat-grid">
+        <article class="feat">
+          <div class="feat-art"><span class="feat-no">01</span><img src="icons/guild.jpg" alt="Idle Guild 아이콘"></div>
+          <div class="feat-body">
+            <p class="feat-genre">Idle RPG</p>
+            <h3>Idle Guild</h3>
+            <p class="feat-ko">방치형 길드 키우기</p>
+            <p class="feat-desc">길드원을 던전에 파견하면 알아서 싸우고, 명성과 장비를 모아 옵니다. 앱을 꺼 둔 동안에도 모험은 계속돼요.</p>
+            <div class="store-row"><a class="store-btn" href="https://apps.apple.com/kr/app/id6779811440" target="_blank" rel="noopener"> App Store</a><a class="store-btn" href="https://play.google.com/store/apps/details?id=com.idle.guild" target="_blank" rel="noopener">▶ Google Play</a></div>
+          </div>
+        </article>
+        <article class="feat">
+          <div class="feat-art"><span class="feat-no">02</span><img src="icons/blade.jpg" alt="Idle Blade Smith 아이콘"></div>
+          <div class="feat-body">
+            <p class="feat-genre">Idle Crafting RPG</p>
+            <h3>Idle Blade Smith</h3>
+            <p class="feat-ko">방치형 대장간: 검 만들기</p>
+            <p class="feat-desc">광석을 캐고 쇠를 녹여 칼날과 손잡이를 조합하세요. 완성한 검을 기사에게 들려 던전으로 보내고, 가져온 재료로 더 좋은 검을 만듭니다.</p>
+            <div class="store-row"><a class="store-btn" href="https://apps.apple.com/kr/app/id6811132548" target="_blank" rel="noopener"> App Store</a><a class="store-btn" href="https://play.google.com/store/apps/details?id=com.blade.smith" target="_blank" rel="noopener">▶ Google Play</a></div>
+          </div>
+        </article>
+        <article class="feat">
+          <div class="feat-art"><span class="feat-no">03</span><img src="icons/farm.jpg" alt="Lazy Farm 아이콘"></div>
+          <div class="feat-body">
+            <p class="feat-genre">Idle Farming</p>
+            <h3>Lazy Farm</h3>
+            <p class="feat-ko">누워서 농장</p>
+            <p class="feat-desc">누워서 쉬는 동안에도 농장은 자라요. 작물 18가지와 일하는 동물들, 자유 배치 농장을 갖춘 귀여운 픽셀 방치형 농장 게임.</p>
+            <div class="store-row"><a class="store-btn" href="https://apps.apple.com/kr/app/id6774788641" target="_blank" rel="noopener"> App Store</a><a class="store-btn" href="https://play.google.com/store/apps/details?id=com.farm.trade" target="_blank" rel="noopener">▶ Google Play</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Games -->
+  <section id="games" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-num">02 — GAMES</p>
+          <h2 class="sec-title">All Games</h2>
+        </div>
+        <p class="sec-desc">경영, 디펜스, 캐주얼까지. 직접 기획하고 그리고 만든 GGU의 게임들.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/split.jpg" alt="4분할 원정대 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Idle RPG · iOS · Android</p>
+              <h3>4분할 원정대</h3>
+            </div>
+          </div>
+          <p>기사·도적·마법사·사제 네 영웅이 화면을 넷으로 나눠 동시에 던전을 오르는 방치형 RPG.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6806672427" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.split.squad" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/spell.jpg" alt="스펠브레이크: 마법 타워 디펜스 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Tower Defense · iOS · Android</p>
+              <h3>스펠브레이크: 마법 타워 디펜스</h3>
+            </div>
+          </div>
+          <p>홀로 선 마법탑이 되어 쏟아지는 마력탄을 요격하세요. 판마다 무엇을 강화할지 고르는 로그라이트 디펜스.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6813854627" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.spell.tower" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/arena.png" alt="투기장 매니저: 검투사 키우기 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Management · Android</p>
+              <h3>투기장 매니저: 검투사 키우기</h3>
+            </div>
+          </div>
+          <p>축구 감독 게임처럼 즐기는 2:2 투기장 경영. 영웅을 영입하고 전투 규칙을 직접 짜서 레전드 리그로.</p>
+          <div class="store-row"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.arena.manager" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/branch.jpg" alt="제4지사: 던전시설관리공단 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Simulation · iOS · Android</p>
+              <h3>제4지사: 던전시설관리공단</h3>
+            </div>
+          </div>
+          <p>용사가 부수고 간 던전은 누가 치울까요? 21종족 직원의 근무표를 짜는 던전 관리 행정 시뮬레이션.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6801756977" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.branch.four" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/cart.jpg" alt="용사의 장바구니 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Idle Shopping RPG · iOS · Android</p>
+              <h3>용사의 장바구니</h3>
+            </div>
+          </div>
+          <p>원정으로 번 돈으로 20곳의 가게에서 장비를 쇼핑하는 방치형 RPG. 단, 상인은 가끔 거짓말을 합니다.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6799284115" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.hero.cart" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/healer.jpg" alt="힐러 키우기 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Healing Simulation · iOS · Android</p>
+              <h3>힐러 키우기</h3>
+            </div>
+          </div>
+          <p>딜은 파티가, 생존은 당신이. 레이드 힐러의 긴장감을 모바일 터치로 옮긴 실시간 힐링 시뮬레이션.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6792133086" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.healer.simulator" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/fantasy.jpg" alt="판타지 상점 시뮬레이터 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Shop Simulation · iOS · Android</p>
+              <h3>판타지 상점 시뮬레이터</h3>
+            </div>
+          </div>
+          <p>오크, 엘프, 드래곤 손님에게 물건을 팔고 거스름돈까지 정확히 계산하는 판타지 잡화점 경영.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6808270586" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.fantasyshop.simulator" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/pigeon.jpg" alt="로봇 vs 비둘기: 방치형 빵집 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Idle Bakery · iOS · Android</p>
+              <h3>로봇 vs 비둘기: 방치형 빵집</h3>
+            </div>
+          </div>
+          <p>중고 로봇 제빵사와 함께 빵을 굽고, 빵을 노리는 동네 비둘기를 쫓아내는 방치형 빵집.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6809312191" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.pigeon.robot" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/sword.png" alt="칼뽑기 - 방치형 검 키우기 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Idle Clicker · Android</p>
+              <h3>칼뽑기 - 방치형 검 키우기</h3>
+            </div>
+          </div>
+          <p>바위에 박힌 칼을 탭으로 뽑아 보세요. 녹슨 부엌칼일까, 엑스칼리버일까? 아기자기한 방치형 클리커.</p>
+          <div class="store-row"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.pull.sword" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/mage.jpg" alt="Idle Mage Academy 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Idle RPG · iOS</p>
+              <h3>Idle Mage Academy</h3>
+            </div>
+          </div>
+          <p>입학 꼴찌 낙제생에서 대마법사까지. 웹소설 감성 텍스트 로그로 즐기는 방치형 마법사 키우기.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6781848358" target="_blank" rel="noopener"> App Store</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/deep.jpg" alt="Deep Idle - 방치형 심해 낚시 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Idle Fishing · iOS</p>
+              <h3>Deep Idle - 방치형 심해 낚시</h3>
+            </div>
+          </div>
+          <p>낚싯줄을 깊은 바다로 내리면 수심대마다 물고기가 걸려요. 도감을 채우고 수족관을 키우세요.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6787365168" target="_blank" rel="noopener"> App Store</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/lotto.png" alt="복권 가게 시뮬레이터 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Tycoon · iOS</p>
+              <h3>복권 가게 시뮬레이터</h3>
+            </div>
+          </div>
+          <p>복권 가게 사장이 되어 복권을 팔고, 추첨을 기다리고, 가게를 키우는 방치형 경영 시뮬레이션.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6772916627" target="_blank" rel="noopener"> App Store</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/pomodoro.png" alt="뽀모도로 던전 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Focus RPG · iOS</p>
+              <h3>뽀모도로 던전</h3>
+            </div>
+          </div>
+          <p>포모도로 타이머로 집중하는 동안 캐릭터가 던전을 탐험합니다. 집중할수록 강해지는 RPG.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6772534621" target="_blank" rel="noopener"> App Store</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/queue.jpg" alt="Queue Up! - 줄서기게임 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Casual · iOS</p>
+              <h3>Queue Up! - 줄서기게임</h3>
+            </div>
+          </div>
+          <p>가장 빨리 빠질 줄을 골라라! 진상 손님과 새치기를 피해 통과하는 한 판 30초 캐주얼 게임.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6776687466" target="_blank" rel="noopener"> App Store</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Apps -->
-  <section>
-    <p class="section-title">Apps</p>
-    <div class="apps">
-
-      <!-- Farm Trade -->
-      <div class="app-card">
-        <img class="app-icon" src="icons/farmtrade.png" alt="Farm Trade 아이콘">
-        <div class="app-body">
-          <div class="app-header">
-            <span class="app-name">Farm Trade</span>
-            <a class="app-store-btn" href="https://apps.apple.com/kr/app/id6774788641" target="_blank">
-              ↗ App Store
-            </a>
-          </div>
-          <p class="app-desc">씨앗을 심고, 작물을 키우고, 시장 시세를 보며 팔아 30일 안에 최대 자산을 모으는 전략 농장 게임. 전 세계 동일 시세로 경쟁하는 주간·일별 챌린지와 글로벌 랭킹을 제공합니다.</p>
-          <div class="tags">
-            <span class="tag engine">Godot 4</span>
-            <span class="tag engine">GDScript</span>
-            <span class="tag db">Firebase</span>
-            <span class="tag api">AdMob</span>
-            <span class="tag">iOS</span>
-          </div>
+  <section id="apps">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-num">03 — APPS</p>
+          <h2 class="sec-title">Playful Apps</h2>
         </div>
+        <p class="sec-desc">게임처럼 즐거운 일상 앱. 산책, 걸음, 타자 연습도 GGU 스타일로.</p>
       </div>
-
-      <!-- Pomodoro Dungeon -->
-      <div class="app-card">
-        <img class="app-icon" src="icons/pomodoro.png" alt="뽀모도로 던전 아이콘">
-        <div class="app-body">
-          <div class="app-header">
-            <span class="app-name">뽀모도로 던전</span>
-            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EB%BD%80%EB%AA%A8%EB%8F%84%EB%A1%9C-%EB%8D%98%EC%A0%84/id6772534621" target="_blank">
-              ↗ App Store
-            </a>
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/border.png" alt="보더콜리 만보기 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Health · iOS</p>
+              <h3>보더콜리 만보기</h3>
+            </div>
           </div>
-          <p class="app-desc">포모도로 타이머로 집중 시간을 쌓으면 픽셀 던전을 탐험하는 RPG. 집중할수록 캐릭터가 성장하고 던전이 깊어집니다.</p>
-          <div class="tags">
-            <span class="tag engine">Godot 4</span>
-            <span class="tag engine">GDScript</span>
-            <span class="tag">iOS</span>
+          <p>1,000보 걸을 때마다 양이 한 마리씩 우리에 들어와요. 걷기를 게임으로 만든 만보기.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6773739392" target="_blank" rel="noopener"> App Store</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/dogwalk.png" alt="도그 워크 - 강아지 산책 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Lifestyle · iOS · Android</p>
+              <h3>도그 워크 - 강아지 산책</h3>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- 도그 워크 -->
-      <div class="app-card">
-        <img class="app-icon" src="icons/dogwalk.png" alt="도그 워크 아이콘">
-        <div class="app-body">
-          <div class="app-header">
-            <span class="app-name">도그 워크 - 강아지 산책</span>
-            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EB%8F%84%EA%B7%B8-%EC%9B%8C%ED%81%AC-%EA%B0%95%EC%95%84%EC%A7%80-%EC%82%B0%EC%B1%85/id6771354024" target="_blank">
-              ↗ App Store
-            </a>
+          <p>산책 시작만 누르면 GPS가 경로·거리·시간을 자동으로 기록하는 강아지 산책 기록 앱.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6771354024" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.walkin.dog" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/typing.png" alt="왕초보 타자연습 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Education · iOS · Android</p>
+              <h3>왕초보 타자연습</h3>
+            </div>
           </div>
-          <p class="app-desc">강아지와 함께하는 산책 기록 앱. GPS로 산책 경로와 거리를 추적하고 히스토리를 저장합니다.</p>
-          <div class="tags">
-            <span class="tag flutter">Flutter</span>
-            <span class="tag api">Google Maps</span>
-            <span class="tag">iOS</span>
+          <p>자음·모음 분해부터 실전 문장까지. 두벌식·천지인을 지원하는 스마트폰 타자 연습.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6770530839" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.king.typing" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/nagging.jpg" alt="AI 잔소리 가계부 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Finance · iOS</p>
+              <h3>AI 잔소리 가계부</h3>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- 보더콜리 만보기 -->
-      <div class="app-card">
-        <img class="app-icon" src="icons/border.png" alt="보더콜리 만보기 아이콘">
-        <div class="app-body">
-          <div class="app-header">
-            <span class="app-name">보더콜리 만보기</span>
-            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EB%B3%B4%EB%8D%94%EC%BD%9C%EB%A6%AC-%EB%A7%8C%EB%B3%B4%EA%B8%B0/id6773739392" target="_blank">
-              ↗ App Store
-            </a>
+          <p>소비할 때마다 AI가 직접 혼내 주는 가계부. 4가지 AI 페르소나와 30일 소비 리포트.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6777889467" target="_blank" rel="noopener"> App Store</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/pastebox.jpg" alt="PasteBox 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Productivity · iOS</p>
+              <h3>PasteBox</h3>
+            </div>
           </div>
-          <p class="app-desc">보더콜리와 함께하는 걸음 수 트래커. HealthKit로 오늘 걸음을 실시간으로 읽어 보더콜리 픽셀 캐릭터가 반응합니다. 1,000보 달성 시 양 떼를 몰 수 있어요.</p>
-          <div class="tags">
-            <span class="tag flutter">Flutter</span>
-            <span class="tag api">HealthKit</span>
-            <span class="tag">iOS</span>
+          <p>계좌번호, 주소, 자기소개까지. 자주 쓰는 텍스트를 저장해 두고 탭 한 번에 복사하세요.</p>
+          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6775975547" target="_blank" rel="noopener"> App Store</a></div>
+        </article>
+        <article class="card">
+          <div class="card-top">
+            <img src="icons/ki.png" alt="기받아가요 아이콘" loading="lazy">
+            <div>
+              <p class="card-genre">Lifestyle · Android</p>
+              <h3>기받아가요</h3>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- 복권 가게 시뮬레이터 -->
-      <div class="app-card">
-        <img class="app-icon" src="icons/lotto.png" alt="복권 가게 시뮬레이터 아이콘">
-        <div class="app-body">
-          <div class="app-header">
-            <span class="app-name">복권 가게 시뮬레이터</span>
-            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EB%B3%B5%EA%B6%8C-%EA%B0%80%EA%B2%8C-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0/id6772916627" target="_blank">
-              ↗ App Store
-            </a>
-          </div>
-          <p class="app-desc">나만의 복권 가게를 운영하는 시뮬레이션 게임. 골드를 쌓고, 명성도를 올리고, 가게를 업그레이드해 더 큰 복권 가게로 키워보세요. 데이터 탭 잠금 해제 인앱 구매 포함.</p>
-          <div class="tags">
-            <span class="tag rn">React Native</span>
-            <span class="tag api">StoreKit</span>
-            <span class="tag">iOS</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 왕초보 타자연습 -->
-      <div class="app-card">
-        <img class="app-icon" src="icons/typing.png" alt="왕초보 타자연습 아이콘">
-        <div class="app-body">
-          <div class="app-header">
-            <span class="app-name">왕초보 타자연습</span>
-            <a class="app-store-btn" href="https://apps.apple.com/kr/app/%EC%99%95%EC%B4%88%EB%B3%B4-%ED%83%80%EC%9E%90%EC%97%B0%EC%8A%B5/id6770530839" target="_blank">
-              ↗ App Store
-            </a>
-          </div>
-          <p class="app-desc">한글·영문 타자 연습 앱. 자판 배열부터 시작해 속도와 정확도를 단계적으로 향상할 수 있습니다.</p>
-          <div class="tags">
-            <span class="tag flutter">Flutter</span>
-            <span class="tag">iOS</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section>
-    <p class="section-title">Tech Stack</p>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Language</h3>
-        <div class="skill-list">
-          <span class="skill-item">GDScript</span>
-          <span class="skill-item">Dart</span>
-          <span class="skill-item">JavaScript</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Framework</h3>
-        <div class="skill-list">
-          <span class="skill-item">Godot 4</span>
-          <span class="skill-item">Flutter</span>
-          <span class="skill-item">React Native</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Backend & API</h3>
-        <div class="skill-list">
-          <span class="skill-item">Firebase</span>
-          <span class="skill-item">HealthKit</span>
-          <span class="skill-item">StoreKit</span>
-          <span class="skill-item">AdMob</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Tools</h3>
-        <div class="skill-list">
-          <span class="skill-item">Xcode</span>
-          <span class="skill-item">App Store Connect</span>
-          <span class="skill-item">GitHub</span>
-        </div>
+          <p>기운이 필요할 때 하루에 한 번 기를 받고, 받은 기를 다른 사람과 나눠요.</p>
+          <div class="store-row"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.shwach.kibadagayo" target="_blank" rel="noopener">▶ Google Play</a></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Customer Support -->
-  <section>
-    <p class="section-title">고객 지원</p>
-    <p class="support-card-text">문의 사항이 있으시면 아래 이메일로 연락해 주세요.</p>
-    <span class="support-email">doggguggu@gmail.com</span>
+  <!-- Studio -->
+  <section id="studio">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="sec-num">04 — STUDIO</p>
+          <h2 class="sec-title">About GGU</h2>
+        </div>
+      </div>
+      <div class="studio">
+        <div class="studio-text">
+          <p><strong>GGU Games</strong>는 기획부터 아트, 개발, 출시까지 직접 해내는 작은 인디 게임 스튜디오입니다.</p>
+          <p>우리는 거창한 대작보다 <strong>출퇴근길, 쉬는 시간, 잠들기 전</strong>에 꺼내 드는 게임을 만듭니다. 짧게 즐겨도 재밌고, 오래 하면 더 깊어지는 게임이 목표예요.</p>
+          <p>새로운 게임 개발 과정과 플레이 영상은 YouTube 채널에서 가장 먼저 공개됩니다.</p>
+        </div>
+        <div class="stats">
+          <div class="stat dark"><b>23</b><span>출시 타이틀</span></div>
+          <div class="stat"><b>17</b><span>게임</span></div>
+          <div class="stat"><b>2</b><span>App Store · Google Play</span></div>
+          <div class="stat"><b>2026</b><span>계속 만드는 중</span></div>
+        </div>
+      </div>
+
+      <div class="values">
+        <div class="value">
+          <h4>Bite-sized</h4>
+          <p>하루 5분이면 충분한 플레이. 짧은 세션으로도 확실한 재미를 줍니다.</p>
+        </div>
+        <div class="value">
+          <h4>Pixel-crafted</h4>
+          <p>귀여운 픽셀 아트와 캐릭터로 한눈에 알아보는 GGU만의 감성.</p>
+        </div>
+        <div class="value">
+          <h4>Ship fast</h4>
+          <p>작게 만들고 빠르게 출시하고, 플레이어 피드백으로 계속 개선합니다.</p>
+        </div>
+      </div>
+
+      <div class="stack">
+        <span class="stack-label">BUILT WITH</span>
+        <span class="chip">Godot 4</span>
+        <span class="chip">Flutter</span>
+        <span class="chip">React Native</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">AdMob</span>
+        <span class="chip">StoreKit</span>
+        <span class="chip">HealthKit</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="logo inverse">GGU</div>
+      <h2>Say hello</h2>
+      <p>게임 문의, 버그 제보, 제휴 제안 모두 환영합니다.</p>
+      <a class="mail" href="mailto:doggguggu@gmail.com">doggguggu@gmail.com</a>
+      <div class="cta-row">
+        <a class="btn btn-white" href="mailto:doggguggu@gmail.com">✉ 이메일 보내기</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/@doggguggu" target="_blank" rel="noopener">▶ YouTube 구독</a>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 Songhwa Chae</p>
+    <div class="wrap">
+      <span class="brand-name">GGU GAMES</span>
+      <nav>
+        <a href="#featured">Featured</a>
+        <a href="#games">Games</a>
+        <a href="#apps">Apps</a>
+        <a href="https://www.youtube.com/@doggguggu" target="_blank" rel="noopener">YouTube</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+      </nav>
+      <span>© 2026 GGU Games. All rights reserved.</span>
+    </div>
   </footer>
 
 </body>
