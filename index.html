@@ -186,8 +186,9 @@
       padding: 11px 14px; border-radius: 999px;
       font-size: 13px; font-weight: 700; text-decoration: none;
       background: var(--white); color: var(--black);
+      border: 1.5px solid var(--white);
     }
-    .store-btn + .store-btn { background: transparent; color: var(--white); border: 1.5px solid #444; }
+    .store-btn.play { background: transparent; color: var(--white); border: 1.5px solid #444; }
     .store-btn:hover { opacity: .85; }
 
     /* ── Game grid ── */
@@ -202,9 +203,10 @@
     }
     section.alt .card { border-color: transparent; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.08); }
-    .card-top { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .card-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; min-height: 76px; }
+    .card-top > div { padding-top: 4px; min-width: 0; }
     .card img { width: 76px; height: 76px; border-radius: 18px; object-fit: cover; }
-    .card-genre { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+    .card-genre { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .04em; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .card h3 { font-size: 19px; font-weight: 900; letter-spacing: -.01em; line-height: 1.3; }
     .card p { font-size: 14px; color: var(--muted); margin-bottom: 20px; flex: 1; }
     .card .store-row { gap: 6px; }
@@ -213,9 +215,10 @@
       font-size: 13px; font-weight: 700; text-decoration: none;
       padding: 8px 14px; border-radius: 999px;
       background: var(--black); color: var(--white);
+      border: 1.5px solid var(--black);
       white-space: nowrap;
     }
-    .store-link + .store-link { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+    .store-link.play { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
     .store-link:hover { opacity: .8; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag {
@@ -365,7 +368,7 @@
             <h3>Idle Guild</h3>
             <p class="feat-ko">방치형 길드 키우기</p>
             <p class="feat-desc">길드원을 던전에 파견하면 알아서 싸우고, 명성과 장비를 모아 옵니다. 앱을 꺼 둔 동안에도 모험은 계속돼요.</p>
-            <div class="store-row"><a class="store-btn" href="https://apps.apple.com/kr/app/id6779811440" target="_blank" rel="noopener"> App Store</a><a class="store-btn" href="https://play.google.com/store/apps/details?id=com.idle.guild" target="_blank" rel="noopener">▶ Google Play</a></div>
+            <div class="store-row"><a class="store-btn ios" href="https://apps.apple.com/kr/app/id6779811440" target="_blank" rel="noopener"> App Store</a><a class="store-btn play" href="https://play.google.com/store/apps/details?id=com.idle.guild" target="_blank" rel="noopener">▶ Google Play</a></div>
           </div>
         </article>
         <article class="feat">
@@ -375,7 +378,7 @@
             <h3>Idle Blade Smith</h3>
             <p class="feat-ko">방치형 대장간: 검 만들기</p>
             <p class="feat-desc">광석을 캐고 쇠를 녹여 칼날과 손잡이를 조합하세요. 완성한 검을 기사에게 들려 던전으로 보내고, 가져온 재료로 더 좋은 검을 만듭니다.</p>
-            <div class="store-row"><a class="store-btn" href="https://apps.apple.com/kr/app/id6811132548" target="_blank" rel="noopener"> App Store</a><a class="store-btn" href="https://play.google.com/store/apps/details?id=com.blade.smith" target="_blank" rel="noopener">▶ Google Play</a></div>
+            <div class="store-row"><a class="store-btn ios" href="https://apps.apple.com/kr/app/id6811132548" target="_blank" rel="noopener"> App Store</a><a class="store-btn play" href="https://play.google.com/store/apps/details?id=com.blade.smith" target="_blank" rel="noopener">▶ Google Play</a></div>
           </div>
         </article>
         <article class="feat">
@@ -385,7 +388,7 @@
             <h3>Lazy Farm</h3>
             <p class="feat-ko">누워서 농장</p>
             <p class="feat-desc">누워서 쉬는 동안에도 농장은 자라요. 작물 18가지와 일하는 동물들, 자유 배치 농장을 갖춘 귀여운 픽셀 방치형 농장 게임.</p>
-            <div class="store-row"><a class="store-btn" href="https://apps.apple.com/kr/app/id6774788641" target="_blank" rel="noopener"> App Store</a><a class="store-btn" href="https://play.google.com/store/apps/details?id=com.farm.trade" target="_blank" rel="noopener">▶ Google Play</a></div>
+            <div class="store-row"><a class="store-btn ios" href="https://apps.apple.com/kr/app/id6774788641" target="_blank" rel="noopener"> App Store</a><a class="store-btn play" href="https://play.google.com/store/apps/details?id=com.farm.trade" target="_blank" rel="noopener">▶ Google Play</a></div>
           </div>
         </article>
       </div>
@@ -407,155 +410,155 @@
           <div class="card-top">
             <img src="icons/split.jpg" alt="4분할 원정대 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Idle RPG · iOS · Android</p>
+              <p class="card-genre">Idle RPG</p>
               <h3>4분할 원정대</h3>
             </div>
           </div>
-          <p>기사·도적·마법사·사제 네 영웅이 화면을 넷으로 나눠 동시에 던전을 오르는 방치형 RPG.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6806672427" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.split.squad" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <p>기사, 도적, 마법사, 사제 네 영웅이 화면을 넷으로 나눠 동시에 던전을 오르는 방치형 RPG.</p>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6806672427" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.split.squad" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/spell.jpg" alt="스펠브레이크: 마법 타워 디펜스 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Tower Defense · iOS · Android</p>
+              <p class="card-genre">Tower Defense</p>
               <h3>스펠브레이크: 마법 타워 디펜스</h3>
             </div>
           </div>
           <p>홀로 선 마법탑이 되어 쏟아지는 마력탄을 요격하세요. 판마다 무엇을 강화할지 고르는 로그라이트 디펜스.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6813854627" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.spell.tower" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6813854627" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.spell.tower" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/arena.png" alt="투기장 매니저: 검투사 키우기 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Management · Android</p>
+              <p class="card-genre">Management</p>
               <h3>투기장 매니저: 검투사 키우기</h3>
             </div>
           </div>
           <p>축구 감독 게임처럼 즐기는 2:2 투기장 경영. 영웅을 영입하고 전투 규칙을 직접 짜서 레전드 리그로.</p>
-          <div class="store-row"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.arena.manager" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.arena.manager" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/branch.jpg" alt="제4지사: 던전시설관리공단 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Simulation · iOS · Android</p>
+              <p class="card-genre">Simulation</p>
               <h3>제4지사: 던전시설관리공단</h3>
             </div>
           </div>
           <p>용사가 부수고 간 던전은 누가 치울까요? 21종족 직원의 근무표를 짜는 던전 관리 행정 시뮬레이션.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6801756977" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.branch.four" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6801756977" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.branch.four" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/cart.jpg" alt="용사의 장바구니 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Idle Shopping RPG · iOS · Android</p>
+              <p class="card-genre">Idle Shopping RPG</p>
               <h3>용사의 장바구니</h3>
             </div>
           </div>
           <p>원정으로 번 돈으로 20곳의 가게에서 장비를 쇼핑하는 방치형 RPG. 단, 상인은 가끔 거짓말을 합니다.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6799284115" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.hero.cart" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6799284115" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.hero.cart" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/healer.jpg" alt="힐러 키우기 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Healing Simulation · iOS · Android</p>
+              <p class="card-genre">Healing Simulation</p>
               <h3>힐러 키우기</h3>
             </div>
           </div>
           <p>딜은 파티가, 생존은 당신이. 레이드 힐러의 긴장감을 모바일 터치로 옮긴 실시간 힐링 시뮬레이션.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6792133086" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.healer.simulator" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6792133086" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.healer.simulator" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/fantasy.jpg" alt="판타지 상점 시뮬레이터 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Shop Simulation · iOS · Android</p>
+              <p class="card-genre">Shop Simulation</p>
               <h3>판타지 상점 시뮬레이터</h3>
             </div>
           </div>
           <p>오크, 엘프, 드래곤 손님에게 물건을 팔고 거스름돈까지 정확히 계산하는 판타지 잡화점 경영.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6808270586" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.fantasyshop.simulator" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6808270586" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.fantasyshop.simulator" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/pigeon.jpg" alt="로봇 vs 비둘기: 방치형 빵집 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Idle Bakery · iOS · Android</p>
+              <p class="card-genre">Idle Bakery</p>
               <h3>로봇 vs 비둘기: 방치형 빵집</h3>
             </div>
           </div>
           <p>중고 로봇 제빵사와 함께 빵을 굽고, 빵을 노리는 동네 비둘기를 쫓아내는 방치형 빵집.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6809312191" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.pigeon.robot" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6809312191" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.pigeon.robot" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/sword.png" alt="칼뽑기 - 방치형 검 키우기 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Idle Clicker · Android</p>
+              <p class="card-genre">Idle Clicker</p>
               <h3>칼뽑기 - 방치형 검 키우기</h3>
             </div>
           </div>
           <p>바위에 박힌 칼을 탭으로 뽑아 보세요. 녹슨 부엌칼일까, 엑스칼리버일까? 아기자기한 방치형 클리커.</p>
-          <div class="store-row"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.pull.sword" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.pull.sword" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/mage.jpg" alt="Idle Mage Academy 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Idle RPG · iOS</p>
+              <p class="card-genre">Idle RPG</p>
               <h3>Idle Mage Academy</h3>
             </div>
           </div>
           <p>입학 꼴찌 낙제생에서 대마법사까지. 웹소설 감성 텍스트 로그로 즐기는 방치형 마법사 키우기.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6781848358" target="_blank" rel="noopener"> App Store</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6781848358" target="_blank" rel="noopener"> App Store</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/deep.jpg" alt="Deep Idle - 방치형 심해 낚시 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Idle Fishing · iOS</p>
+              <p class="card-genre">Idle Fishing</p>
               <h3>Deep Idle - 방치형 심해 낚시</h3>
             </div>
           </div>
           <p>낚싯줄을 깊은 바다로 내리면 수심대마다 물고기가 걸려요. 도감을 채우고 수족관을 키우세요.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6787365168" target="_blank" rel="noopener"> App Store</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6787365168" target="_blank" rel="noopener"> App Store</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/lotto.png" alt="복권 가게 시뮬레이터 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Tycoon · iOS</p>
+              <p class="card-genre">Tycoon</p>
               <h3>복권 가게 시뮬레이터</h3>
             </div>
           </div>
           <p>복권 가게 사장이 되어 복권을 팔고, 추첨을 기다리고, 가게를 키우는 방치형 경영 시뮬레이션.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6772916627" target="_blank" rel="noopener"> App Store</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6772916627" target="_blank" rel="noopener"> App Store</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/pomodoro.png" alt="뽀모도로 던전 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Focus RPG · iOS</p>
+              <p class="card-genre">Focus RPG</p>
               <h3>뽀모도로 던전</h3>
             </div>
           </div>
           <p>포모도로 타이머로 집중하는 동안 캐릭터가 던전을 탐험합니다. 집중할수록 강해지는 RPG.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6772534621" target="_blank" rel="noopener"> App Store</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6772534621" target="_blank" rel="noopener"> App Store</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/queue.jpg" alt="Queue Up! - 줄서기게임 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Casual · iOS</p>
+              <p class="card-genre">Casual</p>
               <h3>Queue Up! - 줄서기게임</h3>
             </div>
           </div>
           <p>가장 빨리 빠질 줄을 골라라! 진상 손님과 새치기를 피해 통과하는 한 판 30초 캐주얼 게임.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6776687466" target="_blank" rel="noopener"> App Store</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6776687466" target="_blank" rel="noopener"> App Store</a></div>
         </article>
       </div>
     </div>
@@ -576,67 +579,67 @@
           <div class="card-top">
             <img src="icons/border.png" alt="보더콜리 만보기 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Health · iOS</p>
+              <p class="card-genre">Health</p>
               <h3>보더콜리 만보기</h3>
             </div>
           </div>
           <p>1,000보 걸을 때마다 양이 한 마리씩 우리에 들어와요. 걷기를 게임으로 만든 만보기.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6773739392" target="_blank" rel="noopener"> App Store</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6773739392" target="_blank" rel="noopener"> App Store</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/dogwalk.png" alt="도그 워크 - 강아지 산책 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Lifestyle · iOS · Android</p>
+              <p class="card-genre">Lifestyle</p>
               <h3>도그 워크 - 강아지 산책</h3>
             </div>
           </div>
-          <p>산책 시작만 누르면 GPS가 경로·거리·시간을 자동으로 기록하는 강아지 산책 기록 앱.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6771354024" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.walkin.dog" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <p>산책 시작만 누르면 GPS가 경로, 거리, 시간을 자동으로 기록하는 강아지 산책 기록 앱.</p>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6771354024" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.walkin.dog" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/typing.png" alt="왕초보 타자연습 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Education · iOS · Android</p>
+              <p class="card-genre">Education</p>
               <h3>왕초보 타자연습</h3>
             </div>
           </div>
-          <p>자음·모음 분해부터 실전 문장까지. 두벌식·천지인을 지원하는 스마트폰 타자 연습.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6770530839" target="_blank" rel="noopener"> App Store</a><a class="store-link" href="https://play.google.com/store/apps/details?id=com.king.typing" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <p>자음과 모음 분해부터 실전 문장까지. 두벌식과 천지인을 지원하는 스마트폰 타자 연습.</p>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6770530839" target="_blank" rel="noopener"> App Store</a><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.king.typing" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/nagging.jpg" alt="AI 잔소리 가계부 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Finance · iOS</p>
+              <p class="card-genre">Finance</p>
               <h3>AI 잔소리 가계부</h3>
             </div>
           </div>
           <p>소비할 때마다 AI가 직접 혼내 주는 가계부. 4가지 AI 페르소나와 30일 소비 리포트.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6777889467" target="_blank" rel="noopener"> App Store</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6777889467" target="_blank" rel="noopener"> App Store</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/pastebox.jpg" alt="PasteBox 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Productivity · iOS</p>
+              <p class="card-genre">Productivity</p>
               <h3>PasteBox</h3>
             </div>
           </div>
           <p>계좌번호, 주소, 자기소개까지. 자주 쓰는 텍스트를 저장해 두고 탭 한 번에 복사하세요.</p>
-          <div class="store-row"><a class="store-link" href="https://apps.apple.com/kr/app/id6775975547" target="_blank" rel="noopener"> App Store</a></div>
+          <div class="store-row"><a class="store-link ios" href="https://apps.apple.com/kr/app/id6775975547" target="_blank" rel="noopener"> App Store</a></div>
         </article>
         <article class="card">
           <div class="card-top">
             <img src="icons/ki.png" alt="기받아가요 아이콘" loading="lazy">
             <div>
-              <p class="card-genre">Lifestyle · Android</p>
+              <p class="card-genre">Lifestyle</p>
               <h3>기받아가요</h3>
             </div>
           </div>
           <p>기운이 필요할 때 하루에 한 번 기를 받고, 받은 기를 다른 사람과 나눠요.</p>
-          <div class="store-row"><a class="store-link" href="https://play.google.com/store/apps/details?id=com.shwach.kibadagayo" target="_blank" rel="noopener">▶ Google Play</a></div>
+          <div class="store-row"><a class="store-link play" href="https://play.google.com/store/apps/details?id=com.shwach.kibadagayo" target="_blank" rel="noopener">▶ Google Play</a></div>
         </article>
       </div>
     </div>
@@ -660,7 +663,7 @@
         <div class="stats">
           <div class="stat dark"><b>23</b><span>출시 타이틀</span></div>
           <div class="stat"><b>17</b><span>게임</span></div>
-          <div class="stat"><b>2</b><span>App Store · Google Play</span></div>
+          <div class="stat"><b>2</b><span>App Store, Google Play</span></div>
           <div class="stat"><b>2026</b><span>계속 만드는 중</span></div>
         </div>
       </div>
