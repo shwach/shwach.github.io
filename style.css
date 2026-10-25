@@ -195,7 +195,7 @@ section.alt .card { border-color: transparent; }
 .card img { width: 76px; height: 76px; border-radius: 18px; object-fit: cover; }
 .card-genre { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .04em; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .card h3 { font-size: 19px; font-weight: 900; letter-spacing: -.01em; line-height: 1.3; }
-.card p { font-size: 14px; color: var(--muted); margin-bottom: 20px; flex: 1; }
+.card > p { font-size: 14px; color: var(--muted); margin-bottom: 20px; flex: 1; }
 .card .store-row { gap: 6px; }
 .card-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .store-link {
