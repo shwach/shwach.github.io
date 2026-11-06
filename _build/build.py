@@ -31,11 +31,7 @@ GAMES = [
         'ko': ('4분할 원정대', '기사, 도적, 마법사, 사제 네 영웅이 화면을 넷으로 나눠 동시에 던전을 오르는 방치형 RPG.'),
         'en': ('Split Squad', 'A knight, rogue, mage and priest each climb their own dungeon at once in this four-way split-screen idle RPG.'),
     }),
-    ('spell.jpg', 6813854627, None, 'Tower Defense', {
-        'ko': ('스펠브레이크: 마법 타워 디펜스', '홀로 선 마법탑이 되어 쏟아지는 마력탄을 요격하세요. 판마다 무엇을 강화할지 고르는 로그라이트 디펜스.'),
-        'en': ('Spellbreak: Arcane Tower', 'You are a lone wizard tower. Shoot down waves of raw magic and choose your upgrades each run in this roguelite defense.'),
-    }),
-    ('meteor.png', None, 'com.spell.tower', 'Planet Defense', {
+    ('meteor.png', 6813854627, 'com.spell.tower', 'Planet Defense', {
         'ko': ('메테오 브레이커: 행성 디펜스', '우주에 홀로 뜬 작은 행성이 되어 소행성과 혜성, UFO를 요격하세요. 부순 광석으로 판마다 강화를 고르는 디펜스.'),
         'en': ('Meteor Breaker: Planet Defense', 'You are a tiny planet alone in space. Shoot down asteroids, comets and UFOs, and spend the ore on upgrades each run.'),
     }),
@@ -79,11 +75,7 @@ GAMES = [
         'ko': ('복권 가게 시뮬레이터', '복권 가게 사장이 되어 복권을 팔고, 추첨을 기다리고, 가게를 키우는 방치형 경영 시뮬레이션.'),
         'en': ('Lottery Shop Simulator', 'Run your own lottery shop. Sell tickets, wait for the draw and grow your store in this idle tycoon game.'),
     }),
-    ('pomodoro.png', 6772534621, None, 'Focus RPG', {
-        'ko': ('뽀모도로 던전', '포모도로 타이머로 집중하는 동안 캐릭터가 던전을 탐험합니다. 집중할수록 강해지는 RPG.'),
-        'en': ('Pomodoro Dungeon', 'Your hero explores the dungeon while you focus with a Pomodoro timer. The more you focus, the stronger you get.'),
-    }),
-    ('dungeon15.png', None, 'com.pomodoro.dungeon', 'Survival Action', {
+    ('dungeon15.png', 6772534621, 'com.pomodoro.dungeon', 'Survival Action', {
         'ko': ('15분 던전', '15분 동안 끝없이 몰려오는 몬스터를 버텨 내세요. 무기는 저절로 공격하고, 진화와 합체로 판마다 새로운 빌드를 만듭니다.'),
         'en': ('15-Minute Dungeon', 'Survive 15 minutes against endless monster waves. Your weapons fire on their own, so evolve and fuse them into a new build every run.'),
     }),
