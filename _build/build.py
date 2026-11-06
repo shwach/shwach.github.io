@@ -31,9 +31,13 @@ GAMES = [
         'ko': ('4분할 원정대', '기사, 도적, 마법사, 사제 네 영웅이 화면을 넷으로 나눠 동시에 던전을 오르는 방치형 RPG.'),
         'en': ('Split Squad', 'A knight, rogue, mage and priest each climb their own dungeon at once in this four-way split-screen idle RPG.'),
     }),
-    ('spell.jpg', 6813854627, 'com.spell.tower', 'Tower Defense', {
+    ('spell.jpg', 6813854627, None, 'Tower Defense', {
         'ko': ('스펠브레이크: 마법 타워 디펜스', '홀로 선 마법탑이 되어 쏟아지는 마력탄을 요격하세요. 판마다 무엇을 강화할지 고르는 로그라이트 디펜스.'),
         'en': ('Spellbreak: Arcane Tower', 'You are a lone wizard tower. Shoot down waves of raw magic and choose your upgrades each run in this roguelite defense.'),
+    }),
+    ('meteor.png', None, 'com.spell.tower', 'Planet Defense', {
+        'ko': ('메테오 브레이커: 행성 디펜스', '우주에 홀로 뜬 작은 행성이 되어 소행성과 혜성, UFO를 요격하세요. 부순 광석으로 판마다 강화를 고르는 디펜스.'),
+        'en': ('Meteor Breaker: Planet Defense', 'You are a tiny planet alone in space. Shoot down asteroids, comets and UFOs, and spend the ore on upgrades each run.'),
     }),
     ('arena.png', None, 'com.arena.manager', 'Management', {
         'ko': ('투기장 매니저: 검투사 키우기', '축구 감독 게임처럼 즐기는 2:2 투기장 경영. 영웅을 영입하고 전투 규칙을 직접 짜서 레전드 리그로.'),
@@ -43,9 +47,9 @@ GAMES = [
         'ko': ('제4지사: 던전시설관리공단', '용사가 부수고 간 던전은 누가 치울까요? 21종족 직원의 근무표를 짜는 던전 관리 행정 시뮬레이션.'),
         'en': ('Branch 4: Dungeon Idle Manager', 'The heroes break it, you clean it up. Schedule a staff of 21 fantasy races in this dungeon facility management sim.'),
     }),
-    ('cart.jpg', 6799284115, 'com.hero.cart', 'Idle Shopping RPG', {
-        'ko': ('용사의 장바구니', '원정으로 번 돈으로 20곳의 가게에서 장비를 쇼핑하는 방치형 RPG. 단, 상인은 가끔 거짓말을 합니다.'),
-        'en': ("Hero's Cart", 'Expeditions earn the gold, you do the shopping across 20 stores. Just watch out, merchants sometimes lie.'),
+    ('ember.jpg', 6799284115, 'com.hero.cart', 'Dark Fantasy Idle RPG', {
+        'ko': ('불씨지기: 방치형 다크판타지 RPG', '재가 된 왕국의 마지막 불씨를 지키세요. 불이 타는 동안 기사는 홀로 길을 걷고, 몬스터를 베고, 보스에게 덤빕니다.'),
+        'en': ('Emberkeeper: Idle Knight RPG', 'Keep the last ember of a fallen kingdom alive. While the fire burns, your knight walks on alone, cutting down monsters and taking on bosses.'),
     }),
     ('healer.jpg', 6792133086, 'com.healer.simulator', 'Healing Simulation', {
         'ko': ('힐러 키우기', '딜은 파티가, 생존은 당신이. 레이드 힐러의 긴장감을 모바일 터치로 옮긴 실시간 힐링 시뮬레이션.'),
@@ -79,9 +83,13 @@ GAMES = [
         'ko': ('뽀모도로 던전', '포모도로 타이머로 집중하는 동안 캐릭터가 던전을 탐험합니다. 집중할수록 강해지는 RPG.'),
         'en': ('Pomodoro Dungeon', 'Your hero explores the dungeon while you focus with a Pomodoro timer. The more you focus, the stronger you get.'),
     }),
-    ('queue.jpg', 6776687466, None, 'Casual', {
-        'ko': ('Queue Up! - 줄서기게임', '가장 빨리 빠질 줄을 골라라! 진상 손님과 새치기를 피해 통과하는 한 판 30초 캐주얼 게임.'),
-        'en': ('Queue Up!', 'Which line moves faster? Dodge rude customers and line cutters in 30-second casual rounds.'),
+    ('dungeon15.png', None, 'com.pomodoro.dungeon', 'Survival Action', {
+        'ko': ('15분 던전', '15분 동안 끝없이 몰려오는 몬스터를 버텨 내세요. 무기는 저절로 공격하고, 진화와 합체로 판마다 새로운 빌드를 만듭니다.'),
+        'en': ('15-Minute Dungeon', 'Survive 15 minutes against endless monster waves. Your weapons fire on their own, so evolve and fuse them into a new build every run.'),
+    }),
+    ('queue.jpg', 6776687466, 'com.queue.up', 'Casual', {
+        'ko': ('Queue Up! - 줄서기 게임', '가장 빨리 빠지는 줄을 골라 계산대를 통과하세요! 새치기꾼을 막고 옆 줄로 갈아타는 코믹 픽셀 줄서기 게임.'),
+        'en': ('Queue Up!', 'Pick the line that moves fastest, block the line cutters and hop lanes in this comic pixel queueing game.'),
     }),
 ]
 
